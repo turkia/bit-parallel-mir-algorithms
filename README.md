@@ -64,3 +64,5 @@ puts BPMIR::directcheck(chords, 'AH')
 puts BPMIR::directcheck2(chords, 'AH')
 puts BPMIR::shiftorand(chords, 'AH')
 ```
+
+Copyright Mika Turkia 2002-2012. License: GNU AGPLv3. 
