@@ -10,9 +10,9 @@ Online at https://tuhat.halvi.helsinki.fi/portal/services/downloadRegister/14284
 
 * Lemström, K.: String Matching Techniques for Music Retrieval. Department of Computer Science, Series of Publications A, Report A-2000-4. Online at http://www.cs.helsinki.fi/u/klemstro/THESIS/
 
-The implementations were based on an early draft version of the article, that contained algorithms not included in the published version. Additionally, the implementations may have minor differences from the published version. 
+Some implementations were based on an early draft version of the article, that contained algorithms not included in the published version. Additionally, the implementations may have minor differences from the published version. 
 
-All algorithms are capable of polyphonic searching.
+All algorithms are capable of polyphonic searching, i.e. source is polyphonic but the pattern to be searched is not.
 
 * monopoly: translation invariant, octave equivalent filtering.
 * mp: octave equivalent filtering. 
@@ -31,29 +31,36 @@ MIDI files can be acquired from the Mutopia Project: http://www.mutopiaproject.o
 Usage
 -----
 
+```ruby
 require_relative 'lib/utils'
+```
 
-Convert MIDI files:
+Create a data directory, put your MIDI files in the midi directory, and run a conversion method: 
 
-Create a data directory, put your midi files in the midi directory, and run conversion: 
-
+```ruby
 BPMIR::MidiUtil.convert('midi', 'data')
+```
 
 Load converted data: 
 
+```ruby
 chords = BPMIR::MidiUtil.load('data/polytest.chords')
 pp = BPMIR::MidiUtil.load('data/polytest.pp')
+```
 
 Monopoly requires three arguments: chord data, preprocessed data, and a pattern to be searched. 
 Chord data is needed for reporting matched notes. The pattern is given as a character string. 
 
+```ruby
 puts BPMIR::monopoly(chords, pp, 'AH')
+```
 
 All the other algorithms require two arguments: chord data and a pattern to be searched. 
 
+```ruby
 puts BPMIR::mp(chords, 'AH')
 puts BPMIR::mp2(chords, 'AH')
 puts BPMIR::directcheck(chords, 'AH')
 puts BPMIR::directcheck2(chords, 'AH')
 puts BPMIR::shiftorand(chords, 'AH')
-
+```
